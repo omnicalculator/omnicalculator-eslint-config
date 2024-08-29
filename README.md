@@ -1,0 +1,1 @@
+# omnicalculator-eslint-config
