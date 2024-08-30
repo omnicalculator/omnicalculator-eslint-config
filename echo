@@ -1,0 +1,15 @@
+[
+  {
+    ignores: [
+      '**/coverage',
+      '**/__generated__',
+      '**/node_modules',
+      '**/pnpm-store',
+      '!**/.babelrc.js',
+      '!**/.eslintrc.js',
+      '**/build',
+      '**/storybook-static',
+      '**/debug'
+    ]
+  }
+]
