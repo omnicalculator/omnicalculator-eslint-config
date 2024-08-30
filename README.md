@@ -63,15 +63,6 @@ $ pnpm install
 
 Once you installed depedencies you are good to start development, no other action is required.
 
-```sh
-$ pnpm knex-migrate
-```
-
-> **Note**
->
-> To run migrations you need to supply the .env file. For the development purposes you can use thre .env.development, just rename it to .env
-
-
 ## Publication
 
 To publish next version of this npm package first create a branch from `main`. Release branch should be named: `release-[versionTag]`, where `[versionTag]` is tag of version you want to publish.
