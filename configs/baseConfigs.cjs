@@ -1,4 +1,4 @@
-const {fixupConfigRules} = require('@eslint/compat')
+const { fixupConfigRules } = require('@eslint/compat');
 const { FlatCompat } = require('@eslint/eslintrc');
 const js = require('@eslint/js');
 
@@ -9,12 +9,12 @@ const compat = new FlatCompat({
 });
 
 module.exports = fixupConfigRules(
-    compat.extends(
-      'eslint:recommended',
-      'plugin:react/recommended',
-      'plugin:@typescript-eslint/recommended',
-      'plugin:prettier/recommended',
-      'plugin:import/typescript',
-      'plugin:testing-library/react'
-    )
+  compat.extends(
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended',
+    'plugin:import/typescript',
+    'plugin:testing-library/react'
   )
+);

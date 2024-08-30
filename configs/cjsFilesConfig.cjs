@@ -1,8 +1,8 @@
 const { OFF } = require('../consts/common.cjs');
 
 module.exports = {
-  files: ['**/*.d.ts'],
+  files: ['**/*.cjs'],
   rules: {
-    '@typescript-eslint/no-empty-object-type': OFF,
+    '@typescript-eslint/no-require-imports': OFF,
   },
 };

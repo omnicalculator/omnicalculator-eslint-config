@@ -1,15 +1,15 @@
-const {OFF, ERROR} = require('../consts/common.cjs');
+const { ERROR, OFF } = require('../consts/common.cjs');
 
 module.exports = {
-    files: ['**/*.js', '**/.*.js'],
+  files: ['**/*.js', '**/.*.js'],
 
-    languageOptions: {
-      ecmaVersion: 5,
-      sourceType: 'script',
-    },
+  languageOptions: {
+    ecmaVersion: 5,
+    sourceType: 'script',
+  },
 
-    rules: {
-      '@typescript-eslint/no-var-requires': OFF,
-      strict: [ERROR, 'global'],
-    },
-}
+  rules: {
+    '@typescript-eslint/no-var-requires': OFF,
+    strict: [ERROR, 'global'],
+  },
+};

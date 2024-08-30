@@ -1,7 +1,7 @@
-const {OFF, ERROR} = require('../consts/common.cjs');
+const { ERROR, OFF } = require('../consts/common.cjs');
 const { TEST_FILES_PATTERNS } = require('../consts/pathPatterns.cjs');
 
-module.exports =    {
+module.exports = {
   files: TEST_FILES_PATTERNS,
 
   rules: {
@@ -21,4 +21,4 @@ module.exports =    {
       },
     ],
   },
-}
+};

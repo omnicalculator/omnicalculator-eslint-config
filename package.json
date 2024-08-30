@@ -8,7 +8,7 @@
   "description": "This is opinionated eslint configuration preset we use at Omnicalculator.com",
   "main": "index.cjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint '**/*.{js,cjs}' --color=true"
   },
   "keywords": [],
   "author": "",
@@ -24,7 +24,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-no-only-tests": "^3.3.0",
-    "eslint-plugin-prettier": "4.0.0",
+    "eslint-plugin-prettier": "5.2.1",
     "eslint-plugin-react": "^7.35.0",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-simple-import-sort": "^12.1.1",

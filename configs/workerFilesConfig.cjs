@@ -1,16 +1,16 @@
-const {OFF} = require('../consts/common.cjs');
+const { OFF } = require('../consts/common.cjs');
 const globals = require('globals');
 
-module.exports =     {
-    files: ['**/*.worker.ts'],
+module.exports = {
+  files: ['**/*.worker.ts'],
 
-    languageOptions: {
-      globals: {
-        ...globals.worker,
-      },
+  languageOptions: {
+    globals: {
+      ...globals.worker,
     },
+  },
 
-    rules: {
-      'no-restricted-globals': OFF,
-    },
-  }
+  rules: {
+    'no-restricted-globals': OFF,
+  },
+};

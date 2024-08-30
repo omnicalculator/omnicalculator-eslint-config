@@ -1,10 +1,10 @@
-const {ERROR} = require('../../consts/common.cjs');
+const { ERROR } = require('../../consts/common.cjs');
 
 module.exports = [
-    ERROR,
-    'single',
-    {
-      avoidEscape: true,
-      allowTemplateLiterals: true,
-    },
-  ]
+  ERROR,
+  'single',
+  {
+    avoidEscape: true,
+    allowTemplateLiterals: true,
+  },
+];

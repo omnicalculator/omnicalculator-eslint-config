@@ -10,13 +10,13 @@ const todoPlzPlugin = require('eslint-plugin-todo-plz');
 const sortDestructureKeysPlugin = require('eslint-plugin-sort-destructure-keys');
 
 module.exports = {
-    '@typescript-eslint': fixupPluginRules(typescriptEslintEslintPlugin),
-    'no-only-tests': noOnlyTestsPlugin,
-    'react-hooks': fixupPluginRules(reactHooksPlugin),
-    'typescript-sort-keys': typescriptSortKeysPlugin,
-    'simple-import-sort': simpleImportSortPlugin,
-    unicorn: unicornPlugin,
-    import: importPlugin,
-    'todo-plz': todoPlzPlugin,
-    'sort-destructure-keys': sortDestructureKeysPlugin,
-  }
+  '@typescript-eslint': fixupPluginRules(typescriptEslintEslintPlugin),
+  'no-only-tests': noOnlyTestsPlugin,
+  'react-hooks': fixupPluginRules(reactHooksPlugin),
+  'typescript-sort-keys': typescriptSortKeysPlugin,
+  'simple-import-sort': simpleImportSortPlugin,
+  unicorn: unicornPlugin,
+  import: importPlugin,
+  'todo-plz': todoPlzPlugin,
+  'sort-destructure-keys': sortDestructureKeysPlugin,
+};

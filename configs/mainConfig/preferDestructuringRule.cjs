@@ -1,4 +1,4 @@
-const {ERROR} = require('../../consts/common.cjs');
+const { ERROR } = require('../../consts/common.cjs');
 
 module.exports = [
   ERROR,
@@ -16,4 +16,4 @@ module.exports = [
   {
     enforceForRenamedProperties: false,
   },
-]
+];
