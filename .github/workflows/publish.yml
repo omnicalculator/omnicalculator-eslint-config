@@ -22,7 +22,13 @@ jobs:
         with:
           node-version: 20.12
           registry-url: 'https://registry.npmjs.org'
-      - run: pnpm i --frozen-lockfile
-      - run: pnpm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+  
+      - name: Install Node.js dependencies
+        run: pnpm i --frozen-lockfile
+
+      - name: Run linters
+        run: pnpm lint
+      - name: Publish to npm
+        run: pnpm publish --access public
