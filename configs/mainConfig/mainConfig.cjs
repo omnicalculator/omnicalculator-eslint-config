@@ -5,6 +5,8 @@ const quotesRule = require('./quotesRule.cjs');
 const noRestictedSyntaxRule = require('./noRestrictedSyntaxRule.cjs');
 const preferDestructuringRule = require('./preferDestructuringRule.cjs');
 const noRestrictedImportsRule = require('./noRestrictedImportsRule.cjs');
+const stringEnumRule = require('./stringEnumRule.cjs');
+const noEmptyFunctionsRule = require('./noEmptyFunctionsRule.cjs');
 
 module.exports = {
   plugins,
@@ -48,5 +50,15 @@ module.exports = {
     'unicorn/catch-error-name': [ERROR, { name: 'error' }],
     'no-restricted-imports': noRestrictedImportsRule,
     'react/jsx-uses-react': OFF,
+    'react/react-in-jsx-scope': OFF,
+    'react/no-unknown-property': [ERROR, { ignore: ['jsx', 'global'] }],
+    'no-empty-function': OFF,
+    '@typescript-eslint/no-use-before-define': [ERROR, { functions: false }],
+    'react-hooks/rules-of-hooks': ERROR,
+    'react-hooks/exhaustive-deps': ERROR,
+    'typescript-sort-keys/string-enum': stringEnumRule,
+    'react/no-unescaped-entities': OFF,
+    '@typescript-eslint/no-empty-function': noEmptyFunctionsRule,
+    'typescript-sort-keys/interface': WARN,
   },
 };
