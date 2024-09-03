@@ -31,4 +31,4 @@ jobs:
       - name: Run linters
         run: pnpm lint
       - name: Publish to npm
-        run: pnpm publish --access public
+        run: pnpm publish --access public --no-git-checks
