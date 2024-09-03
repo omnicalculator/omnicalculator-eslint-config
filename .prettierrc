@@ -1,0 +1,7 @@
+{
+  "arrowParens": "avoid",
+  "endOfLine": "auto",
+  "parser": "babel-ts",
+  "singleQuote": true,
+  "trailingComma": "es5"
+}
