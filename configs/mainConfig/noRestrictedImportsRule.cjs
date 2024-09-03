@@ -21,11 +21,6 @@ module.exports = [
         message:
           "Please use import { styled } from '@omnicalculator/shared-components' instead",
       },
-      {
-        name: 'monaco-editor',
-        message:
-          '`monaco-editor` imports all languages; use the locale `monacoInstance.ts` instead to import only the languages we need',
-      },
     ],
   },
 ];

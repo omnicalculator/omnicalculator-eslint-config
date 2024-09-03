@@ -1,7 +1,7 @@
 const { OFF } = require('../consts/common.cjs');
 
 module.exports = {
-  files: ['**/*test.ts', '**/*test.tsx'],
+  files: ['**/*-test.ts', '**/*.test.ts', '**/*-test.tsx', '**/*.test.tsx'],
 
   rules: {
     'testing-library/no-await-sync-queries': OFF,
