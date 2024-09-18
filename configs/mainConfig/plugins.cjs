@@ -8,6 +8,7 @@ const unicornPlugin = require('eslint-plugin-unicorn');
 const importPlugin = require('eslint-plugin-import');
 const todoPlzPlugin = require('eslint-plugin-todo-plz');
 const sortDestructureKeysPlugin = require('eslint-plugin-sort-destructure-keys');
+const unusedImports = require('eslint-plugin-unused-imports');
 
 module.exports = {
   '@typescript-eslint': fixupPluginRules(typescriptEslintEslintPlugin),
@@ -17,6 +18,7 @@ module.exports = {
   'simple-import-sort': simpleImportSortPlugin,
   unicorn: unicornPlugin,
   import: importPlugin,
+  'unused-imports': unusedImports,
   'todo-plz': todoPlzPlugin,
   'sort-destructure-keys': sortDestructureKeysPlugin,
 };
