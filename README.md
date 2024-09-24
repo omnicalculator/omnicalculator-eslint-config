@@ -63,6 +63,24 @@ $ pnpm install
 
 Once you installed depedencies you are good to start development, no other action is required.
 
+
+## Version update
+
+Package version update is done automatically according to commit message. Check it here: [Bump package version](https://github.com/marketplace/actions/bump-package-version).
+
+- there is no default version bump, be sure to provide correct commit message in case you want to update the version
+- check different options for providing commit message for different [merge strategies](https://github.com/marketplace/actions/bump-package-version#-pull-requests)
+
+
+For automatic version bump start you commit message with: 
+
+**MAJOR** - `M:`,` MAJOR:`, `major:`
+
+**MINOR** - `m:`, `minor:`
+
+**PATCH** - `fix:`, `patch:`
+
+
 ## Publication
 
 To publish next version of this npm package first create a branch from `main`. Release branch should be named: `release-[versionTag]`, where `[versionTag]` is tag of version you want to publish.
