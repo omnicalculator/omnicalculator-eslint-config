@@ -1,6 +1,6 @@
 # Omni Calculator eslint config ⚙️
 
-This is eslint configuration meant to be used across different projects and/or repositories within [Omni Calculator](https://www.omnicalculator.com) company
+This is eslint configuration meant to be used across different projects and/or repositories within [Omni Calculator](https://www.omnicalculator.com) company.
 
 ## Usage
 
