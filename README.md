@@ -74,11 +74,11 @@ Package version update is done automatically according to commit message. Check 
 
 For automatic version bump start you commit message with: 
 
-**MAJOR** - `M:`,` MAJOR:`, `major`
+**MAJOR** - `M:`,` MAJOR:`, `major:`
 
-**MINOR** - `m:`, `minor`
+**MINOR** - `m:`, `minor:`
 
-**PATCH** - `fix`, `patch`
+**PATCH** - `fix:`, `patch:`
 
 
 ## Publication
