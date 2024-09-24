@@ -1,0 +1,21 @@
+name: Package version bump
+on: 
+  push:
+    branches:
+      - main
+      
+jobs:
+  bump:
+    name: Version bump
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Check out Git repository
+      uses: actions/checkout@v4
+
+    - name: Bump the version
+      uses: jpb06/bump-package@latest
+      with:
+        major-keywords: M,MAJOR,major
+        minor-keywords: m,minor
+        patch-keywords: fix,patch
