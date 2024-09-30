@@ -1,20 +1,20 @@
-name: 'Label Checke'
+name: 'Label Check'
 on:
   pull_request:
     branches:
       - main
-    types:
-      - reopened
-      - labeled
-      - unlabeled
+    types: [opened, labeled, unlabeled, synchronize]
 jobs:
   check_labels:
     name: 'Check PR Labels'
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
-      - uses: actions/checkout@v4
       - uses: mheap/github-action-required-labels@v5
         with:
           mode: exactly
           count: 1
           labels: 'major, minor, patch'
+          add_comment: true
+          message: "This PR is being prevented from merging because you have not added one of versioning labels: ```major```, ```minor``` or ```patch```."
