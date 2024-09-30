@@ -6,12 +6,29 @@ on:
     types: 
       - opened
 jobs:
-  add_comment:
-    name: 'Add Comment'
+  check_labels:
+    name: 'Check PR Labels'
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
+    outputs:
+      status: ${{ steps.labels.outputs.status }}
     steps:
-      - uses: mshick/add-pr-comment@v2
+      - id: labels
+        uses: mheap/github-action-required-labels@v5
         with:
-          message: Please set a versioning label of either `major`, `minor`, or `patch` to the pull request.
+          mode: exactly
+          count: 1
+          labels: 'major, minor, patch'
+          exit_type: success
+
+  add_label:
+    name: 'Add Default Label'
+    needs: check_labels
+    runs-on: ubuntu-latest
+    if: needs.check_labels.outputs.status == 'failure'
+    steps:
+      - name: Add Default Label
+        uses: actions-ecosystem/action-add-labels@v1
+        with:
+          labels: 'minor'
