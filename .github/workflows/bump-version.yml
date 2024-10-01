@@ -1,4 +1,4 @@
-name: 'PR Close'
+name: 'Bump Version'
 on:
   pull_request:
     branches:
@@ -7,31 +7,37 @@ on:
       - closed
 jobs:
   merge_pr:
-    name: 'PR Merged'
+    name: 'Bump Version'
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.ACCOUNT_WITH_FORCE_PUSH_PERMISSION_TOKEN }}
-      - uses: actions/setup-node@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
         with:
-          cache: 'npm'
+          version: 9.4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.12
+          cache: 'pnpm'
       - name: Git config
         run: |
           git config --global user.email "${{ secrets.ACCOUNT_WITH_FORCE_PUSH_PERMISSION_EMAIL }}"
           git config --global user.name "${{ secrets.ACCOUNT_WITH_FORCE_PUSH_PERMISSION_NAME }}"
       - name: Apply version bump (major)
         if: contains(github.event.pull_request.labels.*.name, 'major')
-        run: npm version major
+        run: pnpm version major
       - name: Apply version bump (minor)
         if: contains(github.event.pull_request.labels.*.name, 'minor')
-        run: npm version minor
+        run: pnpm version minor
       - name: Apply version bump (patch)
         if: contains(github.event.pull_request.labels.*.name, 'patch')
-        run: npm version patch
+        run: pnpm version patch
       - name: Git push version bump
         run: git push origin main --follow-tags --force
       - id: set-version
         name: Output version change
-        run: npm pkg get version
+        run: pnpm pkg get version
