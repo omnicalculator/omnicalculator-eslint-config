@@ -13,14 +13,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GH_ORG_PAT }}
+          token: ${{ secrets.ACCOUNT_WITH_FORCE_PUSH_PERMISSION_TOKEN }}
       - uses: actions/setup-node@v4
         with:
           cache: 'npm'
       - name: Git config
         run: |
-          git config --global user.email "${{ secrets.GH_ORG_EMAIL }}"
-          git config --global user.name "${{ secrets.GH_ORG_NAME }}"
+          git config --global user.email "${{ secrets.ACCOUNT_WITH_FORCE_PUSH_PERMISSION_EMAIL }}"
+          git config --global user.name "${{ secrets.ACCOUNT_WITH_FORCE_PUSH_PERMISSION_NAME }}"
       - name: Apply version bump (major)
         if: contains(github.event.pull_request.labels.*.name, 'major')
         run: npm version major
