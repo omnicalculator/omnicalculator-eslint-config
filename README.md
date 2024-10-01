@@ -66,19 +66,9 @@ Once you installed depedencies you are good to start development, no other actio
 
 ## Version update
 
-Package version update is done automatically according to commit message. Check it here: [Bump package version](https://github.com/marketplace/actions/bump-package-version).
-
-- there is no default version bump, be sure to provide correct commit message in case you want to update the version
-- check different options for providing commit message for different [merge strategies](https://github.com/marketplace/actions/bump-package-version#-pull-requests)
-
-
-For automatic version bump start you commit message with: 
-
-**MAJOR** - `M:`,` MAJOR:`, `major:`
-
-**MINOR** - `m:`, `minor:`
-
-**PATCH** - `fix:`, `patch:`
+- Open PR
+- Set the **label** with the version update, you need to apply: ```major```,  ```minor``` or  ```patch```.
+- After merging the PR to the main, the version should be updated automatically according to the label.
 
 
 ## Publication
