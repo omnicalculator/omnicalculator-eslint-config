@@ -66,7 +66,7 @@ Once you installed depedencies you are good to start development, no other actio
 
 ## Version update
 
-- Open PR.
+- Open PR
 - Set the **label** with the version update, you need to apply: ```major```,  ```minor``` or  ```patch```.
 - After merging the PR to the main, the version should be updated automatically according to the label.
 
