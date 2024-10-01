@@ -5,6 +5,8 @@ on:
       - main
     types:
       - closed
+permissions:
+  contents: write
 jobs:
   merge_pr:
     name: 'Bump Version'
