@@ -17,4 +17,4 @@ jobs:
           count: 1
           labels: 'major, minor, patch'
           add_comment: true
-          message: "This PR is being prevented from merging because you have not added one of versioning labels: ```major```, ```minor``` or ```patch```."
+          message: "For merging ***one*** versioning label is required: ```major```, ```minor``` or ```patch```."
