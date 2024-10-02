@@ -10,7 +10,27 @@ permissions:
   contents: write
 
 jobs:
-  run-linter-job:
-    uses: ./.github/workflows/lint-job.yml
-    with:
-      branch_name: ${{ github.head_ref }}
+  run-linters:
+    name: Run linters
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.12
+          cache: 'pnpm'
+
+      - name: Install Node.js dependencies
+        run: pnpm install
+
+      - name: Run linters
+        run: pnpm lint
