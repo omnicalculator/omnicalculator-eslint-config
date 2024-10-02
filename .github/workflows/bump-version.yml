@@ -8,8 +8,14 @@ on:
 permissions:
   contents: write
 jobs:
+  run-linter-job:
+    uses: ./.github/workflows/lint-job.yml
+    if: github.event.pull_request.merged == true
+    with:
+      branch_name: ${{ github.head_ref }}
   merge_pr:
     name: 'Bump Version'
+    needs: run-linter-job
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
@@ -40,6 +46,3 @@ jobs:
         run: pnpm version patch
       - name: Git push version bump
         run: git push origin main --follow-tags --force
-      - id: set-version
-        name: Output version change
-        run: pnpm pkg get version
