@@ -7,6 +7,7 @@ on:
       - closed
 permissions:
   contents: write
+  checks: write
 jobs:
   run-linter-job:
     uses: ./.github/workflows/lint-job.yml
