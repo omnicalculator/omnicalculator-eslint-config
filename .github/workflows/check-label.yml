@@ -5,7 +5,7 @@ on:
       - main
     types: [labeled, unlabeled, synchronize]
 jobs:
-  check_labels:
+  check-labels:
     name: 'Check PR Labels'
     runs-on: ubuntu-latest
     permissions:
