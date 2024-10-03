@@ -6,7 +6,7 @@ on:
     types: 
       - opened
 jobs:
-  check_labels:
+  check-labels:
     name: 'Check PR Labels'
     runs-on: ubuntu-latest
     permissions:
@@ -22,9 +22,9 @@ jobs:
           labels: 'major, minor, patch'
           exit_type: success
 
-  add_label:
+  add-label:
     name: 'Add Default Label'
-    needs: check_labels
+    needs: check-labels
     runs-on: ubuntu-latest
     if: needs.check_labels.outputs.status == 'failure'
     steps:
