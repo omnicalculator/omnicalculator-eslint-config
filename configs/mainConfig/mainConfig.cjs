@@ -7,6 +7,7 @@ const preferDestructuringRule = require('./preferDestructuringRule.cjs');
 const noRestrictedImportsRule = require('./noRestrictedImportsRule.cjs');
 const stringEnumRule = require('./stringEnumRule.cjs');
 const noEmptyFunctionsRule = require('./noEmptyFunctionsRule.cjs');
+const noRestrictedPropertiesRule = require('./noRestrictedPropertiesRule.cjs');
 
 module.exports = {
   plugins,
@@ -62,5 +63,6 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': [ERROR, { functions: false }],
     'typescript-sort-keys/interface': WARN,
     'unused-imports/no-unused-imports': ERROR,
+    'no-restricted-properties': noRestrictedPropertiesRule,
   },
 };
