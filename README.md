@@ -73,7 +73,5 @@ Once you installed depedencies you are good to start development, no other actio
 
 ## Publication
 
-To publish next version of this npm package first create a branch from `main`. Release branch should be named: `release-[versionTag]`, where `[versionTag]` is tag of version you want to publish.
-
-Push such branch to github and follow github instructions on [creating and publishing release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release) in github GUI.
+To publish next version of this npm package just follow github instructions on [creating and publishing release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release) in github GUI. Make sure the tag you created corresponds to the current version in package.json.
 
