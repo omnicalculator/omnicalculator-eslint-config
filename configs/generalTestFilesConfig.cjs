@@ -12,6 +12,8 @@ module.exports = {
     'testing-library/prefer-presence-queries': OFF,
     'testing-library/await-async-events': OFF,
     '@typescript-eslint/no-require-imports': OFF,
+    '@next/next/no-img-element': OFF,
+    '@typescript-eslint/no-non-null-assertion': OFF,
     quotes: [
       ERROR,
       'single',
