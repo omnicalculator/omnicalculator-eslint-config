@@ -9,7 +9,7 @@ const importPlugin = require('eslint-plugin-import');
 const todoPlzPlugin = require('eslint-plugin-todo-plz');
 const sortDestructureKeysPlugin = require('eslint-plugin-sort-destructure-keys');
 const unusedImports = require('eslint-plugin-unused-imports');
-const omnicalculatorPlugin = require('../../plugins/eslint-plugin-omnicalculator/index.js');
+const omnicalculatorPlugin = require('../../plugins/eslint-plugin-omnicalculator/index.cjs');
 
 module.exports = {
   omnicalculator: omnicalculatorPlugin,

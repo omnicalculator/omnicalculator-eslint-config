@@ -43,6 +43,7 @@ module.exports = {
     ],
     quotes: quotesRule,
     'unicorn/prefer-number-properties': ERROR,
+    'no-eq-null': ERROR,
     'omnicalculator/nullish-utils': ERROR,
     eqeqeq: [ERROR, 'always'],
     'no-implicit-coercion': ERROR,

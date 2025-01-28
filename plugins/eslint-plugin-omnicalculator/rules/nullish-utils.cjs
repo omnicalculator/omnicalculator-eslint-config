@@ -77,15 +77,19 @@ function buildFixFunction(sourceCode, node) {
       return [];
     }
 
-    const importFix = createImportFix({
-      sourceCode,
-      fixer,
-      newIdentifier: utilFunctionName,
-      importPath: IMPORT_UTILS_PATH,
-    });
+    try {
+      const importFix = createImportFix({
+        sourceCode,
+        fixer,
+        newIdentifier: utilFunctionName,
+        importPath: IMPORT_UTILS_PATH,
+      });
 
-    if (importFix) {
-      fixes.push(importFix);
+      if (importFix) {
+        fixes.push(importFix);
+      }
+    } catch (error) {
+      return [];
     }
 
     const utilFunctionFix = createUtilFunctionFix({
@@ -171,40 +175,50 @@ function createImportFix({ fixer, importPath, newIdentifier, sourceCode }) {
   const program = sourceCode.ast;
   const { body } = program;
 
-  const importDeclaration = body.find(
+  const targetedImportDeclaration = body.find(
     node =>
       node.type === 'ImportDeclaration' && node.source.value === importPath
   );
 
-  if (!importDeclaration) {
-    //  TODO: handle 'use strict' and other stuff on top of the file
+  if (!targetedImportDeclaration) {
+    const firstImportDeclaration = body.find(
+      node => node.type === 'ImportDeclaration'
+    );
+
+    if (!firstImportDeclaration) {
+      throw new Error(`Can't fix import automatically`);
+    }
 
     return fixer.insertTextBefore(
-      body[0],
+      firstImportDeclaration,
       `import { ${newIdentifier} } from "${importPath}";\n`
     );
   }
 
-  const alreadyImported = importDeclaration.specifiers.some(specifier => {
-    return (
-      specifier.type === 'ImportSpecifier' &&
-      specifier.imported.name === newIdentifier
-    );
-  });
+  const alreadyImported = targetedImportDeclaration.specifiers.some(
+    specifier => {
+      return (
+        specifier.type === 'ImportSpecifier' &&
+        specifier.imported.name === newIdentifier
+      );
+    }
+  );
 
   if (alreadyImported) {
     return null;
   }
 
-  if (importDeclaration.specifiers.length > 0) {
+  if (targetedImportDeclaration.specifiers.length > 0) {
     const lastSpecifier =
-      importDeclaration.specifiers[importDeclaration.specifiers.length - 1];
+      targetedImportDeclaration.specifiers[
+        targetedImportDeclaration.specifiers.length - 1
+      ];
 
     return fixer.insertTextAfter(lastSpecifier, `, ${newIdentifier}`);
   }
 
   return fixer.replaceText(
-    importDeclaration,
+    targetedImportDeclaration,
     `import { ${newIdentifier} } from "${importPath}";`
   );
 }
