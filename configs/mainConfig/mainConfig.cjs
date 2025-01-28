@@ -12,11 +12,7 @@ const noRestrictedPropertiesRule = require('./noRestrictedPropertiesRule.cjs');
 module.exports = {
   plugins,
   languageOptions,
-  settings: {
-    react: {
-      version: '18.2.0',
-    },
-  },
+
   rules: {
     complexity: [ERROR, 15],
     curly: [ERROR, 'all'],
@@ -65,5 +61,6 @@ module.exports = {
     'typescript-sort-keys/interface': WARN,
     'unused-imports/no-unused-imports': ERROR,
     'no-restricted-properties': noRestrictedPropertiesRule,
+    '@typescript-eslint/no-non-null-assertion': ERROR,
   },
 };
