@@ -32,6 +32,7 @@ module.exports = {
     'no-use-before-define': OFF,
     'no-prototype-builtins': OFF,
     'no-only-tests/no-only-tests': ERROR,
+    'default-case': ERROR,
     'no-var': ERROR,
     'prefer-const': ERROR,
     'prefer-destructuring': preferDestructuringRule,
