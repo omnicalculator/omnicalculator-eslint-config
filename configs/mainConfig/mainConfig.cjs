@@ -18,6 +18,7 @@ module.exports = {
     },
   },
   rules: {
+    'omnicalculator/nullish-utils': ERROR,
     complexity: [ERROR, 15],
     curly: [ERROR, 'all'],
     'import/first': ERROR,
@@ -44,7 +45,6 @@ module.exports = {
     quotes: quotesRule,
     'unicorn/prefer-number-properties': ERROR,
     'no-eq-null': ERROR,
-    'omnicalculator/nullish-utils': ERROR,
     eqeqeq: [ERROR, 'always'],
     'no-implicit-coercion': ERROR,
     'unicorn/catch-error-name': [ERROR, { name: 'error' }],
