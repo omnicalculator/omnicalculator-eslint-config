@@ -2,6 +2,7 @@
 
 const IMPORT_UTILS_PATH = '@omnicalculator/shared/src/utils';
 
+/** @type {import('eslint').Rule.RuleModule} */
 module.exports = {
   meta: {
     type: 'problem',
@@ -19,7 +20,7 @@ module.exports = {
     },
   },
   create(context) {
-    const sourceCode = context.getSourceCode();
+    const { sourceCode } = context;
 
     return {
       BinaryExpression(node) {
@@ -31,7 +32,7 @@ module.exports = {
           return;
         }
 
-        const isEsm = detectModuleSystem(sourceCode) === 'esm';
+        const isEsm = checkIfEsm(sourceCode);
 
         const fix = isEsm ? buildFixFunction(sourceCode, node) : undefined;
 
@@ -45,6 +46,10 @@ module.exports = {
   },
 };
 
+/**
+ * @param {import('estree').Node} node
+ * @returns {boolean}
+ */
 function isNullOrUndefined(node) {
   if (node.type === 'Literal' && node.value === null) {
     return true;
@@ -57,6 +62,11 @@ function isNullOrUndefined(node) {
   return false;
 }
 
+/**
+ * @param {import('eslint').SourceCode} sourceCode
+ * @param {import('estree').BinaryExpression} node
+ * @returns {import('eslint').Rule.Fix[]}
+ * */
 function buildFixFunction(sourceCode, node) {
   return fixer => {
     const fixes = [];
@@ -93,6 +103,10 @@ function buildFixFunction(sourceCode, node) {
   };
 }
 
+/**
+ * @param {string} operator
+ * @returns {string | null}
+ * */
 function getUtilFunctionName(operator) {
   switch (operator) {
     case '==':
@@ -104,6 +118,11 @@ function getUtilFunctionName(operator) {
   }
 }
 
+/**
+ * @param {import('eslint').SourceCode} sourceCode
+ * @param {import('estree').BinaryExpression} node
+ * @returns {string | null}
+ */
 function getOldExpression(sourceCode, node) {
   const { left, right } = node;
 
@@ -121,6 +140,14 @@ function getOldExpression(sourceCode, node) {
   return null;
 }
 
+/**
+ * @param {object} options
+ * @param {import('eslint').Rule.RuleFixer} options.fixer
+ * @param {import('estree').Node} options.node
+ * @param {import('eslint').SourceCode} options.sourceCode
+ * @param {string} options.utilFunctionName
+ * @returns {import('eslint').Rule.Fix | null}
+ */
 function createUtilFunctionFix({ fixer, node, sourceCode, utilFunctionName }) {
   const oldExpression = getOldExpression(sourceCode, node);
   if (oldExpression === null) {
@@ -132,6 +159,14 @@ function createUtilFunctionFix({ fixer, node, sourceCode, utilFunctionName }) {
   return fixer.replaceText(node, replacement);
 }
 
+/**
+ * @param {object} options
+ * @param {import('eslint').Rule.RuleFixer} options.fixer
+ * @param {string} options.importPath
+ * @param {string} options.newIdentifier
+ * @param {import('eslint').SourceCode} options.sourceCode
+ * @returns {import('eslint').Rule.Fix | null}
+ */
 function createImportFix({ fixer, importPath, newIdentifier, sourceCode }) {
   const program = sourceCode.ast;
   const { body } = program;
@@ -174,40 +209,21 @@ function createImportFix({ fixer, importPath, newIdentifier, sourceCode }) {
   );
 }
 
-function detectModuleSystem(sourceCode) {
-  const { ast } = sourceCode;
-
-  for (const node of ast.body) {
+/**
+ *
+ * @param {import('eslint').SourceCode} sourceCode
+ * @returns {boolean}
+ */
+function checkIfEsm(sourceCode) {
+  for (const node of sourceCode.ast.body) {
     if (
       node.type === 'ImportDeclaration' ||
       node.type === 'ExportNamedDeclaration' ||
       node.type === 'ExportDefaultDeclaration'
     ) {
-      return 'esm';
-    }
-
-    if (
-      node.type === 'VariableDeclaration' &&
-      node.declarations.some(
-        decl =>
-          decl.init &&
-          decl.init.type === 'CallExpression' &&
-          decl.init.callee.name === 'require'
-      )
-    ) {
-      return 'commonjs';
-    }
-
-    if (
-      node.type === 'ExpressionStatement' &&
-      node.expression.type === 'AssignmentExpression' &&
-      node.expression.left.type === 'MemberExpression' &&
-      node.expression.left.object.name === 'module' &&
-      node.expression.left.property.name === 'exports'
-    ) {
-      return 'commonjs';
+      return true;
     }
   }
 
-  return 'unknown';
+  return false;
 }
