@@ -8,7 +8,7 @@ module.exports = {
     type: 'problem',
     docs: {
       description:
-        'Use isNullish and isDefined utils when checking for nullish and not-nullish values.',
+        'Enforce the usage of isNullish and isDefined utility functions for checking nullish and non-nullish values.',
       category: 'Best Practices',
       recommended: true,
     },
@@ -16,7 +16,7 @@ module.exports = {
     schema: [],
     messages: {
       useIsNullish:
-        'Please use isNullish and isDefined utils when checking for nullish and not-nullish values.',
+        'Please use isNullish and isDefined utility functions for checking nullish and non-nullish values.',
     },
   },
   create(context) {
