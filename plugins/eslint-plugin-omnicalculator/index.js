@@ -1,7 +1,7 @@
 'use strict';
 
-const useIsNullish = require('./rules/use-is-nullish.js');
+const nullishUtils = require('./rules/nullish-utils.js');
 
 module.exports.rules = {
-  'use-is-nullish': useIsNullish,
+  'nullish-utils': nullishUtils,
 };
