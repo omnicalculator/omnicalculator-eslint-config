@@ -17,7 +17,11 @@ module.exports = {
       {
         type: 'object',
         properties: {
-          utilsImportPath: { type: 'string' },
+          utilsImportPath: {
+            type: 'string',
+            description:
+              'Path to utils that will be used for importing isNullish and isDefined utils',
+          },
         },
         additionalProperties: false,
       },
