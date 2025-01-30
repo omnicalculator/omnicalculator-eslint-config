@@ -13,7 +13,15 @@ module.exports = {
       recommended: true,
     },
     fixable: 'code',
-    schema: [],
+    schema: [
+      {
+        type: 'object',
+        properties: {
+          utilsImportPath: { type: 'string' },
+        },
+        additionalProperties: false,
+      },
+    ],
     messages: {
       useIsNullish:
         'Please use isNullish and isDefined utility functions for checking nullish and non-nullish values.',
@@ -21,6 +29,8 @@ module.exports = {
   },
   create(context) {
     const { sourceCode } = context;
+    const options = context.options[0] || {};
+    const utilsImportPath = options.utilsImportPath || IMPORT_UTILS_PATH;
 
     return {
       BinaryExpression(node) {
@@ -34,7 +44,13 @@ module.exports = {
 
         const isEsm = checkIfEsm(sourceCode);
 
-        const fix = isEsm ? buildFixFunction(sourceCode, node) : undefined;
+        const fix = isEsm
+          ? buildFixFunction({
+              sourceCode,
+              node,
+              utilsImportPath,
+            })
+          : undefined;
 
         context.report({
           node,
@@ -63,11 +79,13 @@ function isNullOrUndefined(node) {
 }
 
 /**
- * @param {import('eslint').SourceCode} sourceCode
- * @param {import('estree').BinaryExpression} node
- * @returns {import('eslint').Rule.Fix[]}
- * */
-function buildFixFunction(sourceCode, node) {
+ * @param {object} options
+ * @param {import('eslint').SourceCode} options.sourceCode
+ * @param {import('estree').BinaryExpression} options.node
+ * @param {string} options.utilsImportPath
+ * @returns {import('eslint').Rule.FixFunction}
+ */
+function buildFixFunction({ node, sourceCode, utilsImportPath }) {
   return fixer => {
     const fixes = [];
 
@@ -82,7 +100,7 @@ function buildFixFunction(sourceCode, node) {
         sourceCode,
         fixer,
         newIdentifier: utilFunctionName,
-        importPath: IMPORT_UTILS_PATH,
+        importPath: utilsImportPath,
       });
 
       if (importFix) {
