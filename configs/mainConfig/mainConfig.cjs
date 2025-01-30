@@ -18,6 +18,7 @@ module.exports = {
     },
   },
   rules: {
+    'omnicalculator/nullish-utils': ERROR,
     complexity: [ERROR, 15],
     curly: [ERROR, 'all'],
     'import/first': ERROR,

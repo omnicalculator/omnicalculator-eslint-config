@@ -23,15 +23,15 @@ yarn add -D  omnicalculator-eslint-config
 Use this configuration preset in you `eslint.config.js` file. If you do not need to extend this configuration simply reexport:
 ```js
 // eslint.config.js
-const omniCalculatorEslintConfig = require(' omnicalculator-eslint-config');
+const omniCalculatorEslintConfig = require('omnicalculator-eslint-config');
 
 module.exports = omniCalculatorEslintConfig;
 ```
 
-In case yoy need to extend thuis configuration simply add your config at the end to exported array:
+In case you need to extend this configuration simply add your config at the end to exported array:
 ```js
 // eslint.config.js
-const omniCalculatorEslintConfig = require(' omnicalculator-eslint-config');
+const omniCalculatorEslintConfig = require('omnicalculator-eslint-config');
 
 module.exports = [
   ...omniCalculatorEslintConfig,
@@ -42,6 +42,25 @@ module.exports = [
 ];
 
 ```
+
+### Custom rules
+We provide the following custom rules that can be configured with eslint options.
+
+#### omnicalculator/nullish-utils
+Enforces the usage of `isNullish` and `isDefined` utility functions for checking nullish and non-nullish values.
+
+Options:
+```
+{
+  utilsImportPath: {
+    type: 'string',
+    description:
+      'Path to utils that will be used for importing isNullish and isDefined utils',
+  }
+}
+```
+
+
 
 ## Development
 
