@@ -66,8 +66,8 @@ Options:
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org) — version 20.x
-- [pnpm](https://pnpm.io/) — version 10.x
+- [Node.js](https://nodejs.org) — version ^22.14.0
+- [pnpm](https://pnpm.io/) — version ^10.5.0
 
 
 ### Install
