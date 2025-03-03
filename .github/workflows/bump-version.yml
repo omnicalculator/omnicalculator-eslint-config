@@ -18,12 +18,10 @@ jobs:
           token: ${{ secrets.ACCOUNT_WITH_FORCE_PUSH_PERMISSION_TOKEN }}
       - name: Install pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 9.4
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20.12
+          node-version: 22.14
           cache: 'pnpm'
       - name: Git config
         run: |
