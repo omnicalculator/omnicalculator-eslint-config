@@ -15,6 +15,8 @@ module.exports = fixupConfigRules(
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
     'plugin:import/typescript',
-    'plugin:testing-library/react'
+    'plugin:testing-library/react',
+    'plugin:@next/next/recommended',
+    'plugin:react-hooks/recommended'
   )
 );
