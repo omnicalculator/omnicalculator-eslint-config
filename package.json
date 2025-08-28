@@ -1,10 +1,10 @@
 {
   "name": "omnicalculator-eslint-config",
   "engines": {
-    "node": "^22.14.0",
-    "pnpm": "^10.5.0"
+    "node": "^22.18.0",
+    "pnpm": "^10.15.0"
   },
-  "packageManager": "pnpm@10.5.2+sha512.da9dc28cd3ff40d0592188235ab25d3202add8a207afbedc682220e4a0029ffbff4562102b9e6e46b4e3f9e8bd53e6d05de48544b0c57d4b0179e22c76d1199b",
+  "packageManager": "pnpm@10.15.0+sha512.486ebc259d3e999a4e8691ce03b5cac4a71cbeca39372a9b762cb500cfdf0873e2cb16abe3d951b1ee2cf012503f027b98b6584e4df22524e0c7450d9ec7aa7b",
   "version": "3.0.1",
   "description": "This is opinionated eslint configuration preset we use at Omnicalculator.com",
   "main": "index.cjs",
