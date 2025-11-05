@@ -23,4 +23,5 @@ module.exports.TEST_FILES_PATTERNS = [
   '**/__tests__/**/*.*',
   '**/testutils/**/*.*',
   '**/testUtils/**/*.*',
+  '**/utils/tests/**/*.*',
 ];

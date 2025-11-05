@@ -14,8 +14,8 @@ const cjsFilesConfig = require('./configs/cjsFilesConfig.cjs');
 
 module.exports = function createConfig() {
   return [
-    { ignores: ESLINT_IGNORED_PATHS },
     ...baseConfig,
+    { ignores: ESLINT_IGNORED_PATHS },
     mainConfig,
     jsFilesConfig,
     testFilesConfig,
